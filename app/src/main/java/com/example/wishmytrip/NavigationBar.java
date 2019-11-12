@@ -2,10 +2,13 @@ package com.example.wishmytrip;
 
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -14,6 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 
 
 import android.view.Menu;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -54,9 +59,25 @@ public class NavigationBar extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_bar, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.navigation_bar,menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.d("Query:",query);
+                Toast.makeText(getApplicationContext(),"Query:"+query,Toast.LENGTH_LONG).show();
+            return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                Log.d("Text:",newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onSupportNavigateUp() {
