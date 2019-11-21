@@ -15,15 +15,29 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.wishmytrip.R;
+import com.example.wishmytrip.cruiseFragment;
 
 import java.text.CollationElementIterator;
 import java.util.ArrayList;
@@ -32,7 +46,7 @@ import java.util.List;
 
 import static android.R.layout.simple_spinner_item;
 
-public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
+public class SearchFragment extends  Fragment implements DatePickerDialog.OnDateSetListener {
 
     private SearchViewModel galleryViewModel;
     private TextView frmDate;
@@ -83,16 +97,22 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         btnSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "OnClickListener : " +
-                                "\nFrom : "+ String.valueOf(from.getSelectedItem()) +
-                                "\nTo : "+ String.valueOf(too.getSelectedItem())+
-                                "\nDate : "+ String.valueOf(frmDate.getText()) +
-                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-                                "\nLine : "+ String.valueOf(cruiseLine.getSelectedItem()) +
-                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-                                "\nRange : "+ String.valueOf(priceRange.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(),
+//                        "OnClickListener : " +
+//                                "\nFrom : "+ String.valueOf(from.getSelectedItem()) +
+//                                "\nTo : "+ String.valueOf(too.getSelectedItem())+
+//                                "\nDate : "+ String.valueOf(frmDate.getText()) +
+//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
+//                                "\nLine : "+ String.valueOf(cruiseLine.getSelectedItem()) +
+//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
+//                                "\nRange : "+ String.valueOf(priceRange.getSelectedItem()),
+//                        Toast.LENGTH_SHORT).show();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                cruiseFragment fragment = new cruiseFragment();
+                fragmentTransaction.add(R.id.recyclerView, fragment);
+                fragmentTransaction.commit();
             }
         });
         return root;
@@ -175,7 +195,6 @@ public class SearchFragment extends Fragment implements DatePickerDialog.OnDateS
         cruiseLine.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
     }
-
 
 
 
