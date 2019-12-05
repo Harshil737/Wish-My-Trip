@@ -1,4 +1,4 @@
-package com.example.wishmytrip;
+package com.example.wishmytrip.POJO;
 
 public class Cruise {
 
@@ -7,7 +7,7 @@ public class Cruise {
     private double price;
     private int image;
 
-    Cruise(int id, String title, String desc, double price, int image) {
+    public Cruise(int id, String title, String desc, double price, int image) {
         this.id = id;
         this.title = title;
         this.desc = desc;
@@ -19,15 +19,15 @@ public class Cruise {
         return id;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    String getDesc() {
+    public String getDesc() {
         return desc;
     }
 
-    double getPrice() {
+    public double getPrice() {
         return price;
     }
 

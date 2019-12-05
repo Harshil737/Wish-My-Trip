@@ -4,16 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.wishmytrip.AdapterDestinations;
-import com.example.wishmytrip.BlankFragment;
+import com.example.wishmytrip.Adapter.AdapterDestinations;
 import com.example.wishmytrip.POJO.Destination;
 import com.example.wishmytrip.R;
 
@@ -71,36 +70,25 @@ public class HomeFragment extends Fragment implements AdapterDestinations.onDest
         AdapterDestinations adapterDestinations1 = new AdapterDestinations(getActivity().getApplicationContext(), listDestinations);
         recycler_view_best_scuba.setLayoutManager(layout_manager_best_scuba);
         recycler_view_best_scuba.setAdapter(adapterDestinations1);
+        adapterDestinations1.setClickListener(this);
 
         RecyclerView.LayoutManager layout_manager_explore_vancouver = new LinearLayoutManager(getActivity().getApplicationContext(), RecyclerView.HORIZONTAL, false);
         RecyclerView recycler_view_explore_vancouver = root.findViewById(R.id.home_recycler_view_explore_vancouver);
         AdapterDestinations adapterDestinations2 = new AdapterDestinations(getActivity().getApplicationContext(), listDestinations);
         recycler_view_explore_vancouver.setLayoutManager(layout_manager_explore_vancouver);
         recycler_view_explore_vancouver.setAdapter(adapterDestinations2);
+        adapterDestinations2.setClickListener(this);
     }
 
     @Override
     public void onDestinationClicked(Destination destination) {
-//        Toast.makeText(this.getContext(), this.getId() + "", Toast.LENGTH_LONG).show();
-//        CruiseDetails nextFrag = new CruiseDetails();
-//        getActivity().getSupportFragmentManager().beginTransaction()
-////                .add(nextFrag, "Harshil")
-//                .replace(R.id.fragment_main, nextFrag, "Tags")
-//                .commit();
-
-//        CruiseDetails newGamefragment = new CruiseDetails();
-//        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_main, newGamefragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-
-//        Toast.makeText(getContext(), "GSD", Toast.LENGTH_LONG).show();
+        Toast.makeText(this.getContext(), destination.getDescription() + "", Toast.LENGTH_LONG).show();
 
 //        Intent intent = new Intent(getActivity(), CruiseDetails.class);
 //        startActivity(intent);
 
-        final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.nav_host_fragment, new BlankFragment(), "NewFragmentTag");
-        ft.commit();
+//        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.replace(R.id.nav_host_fragment, new BlankFragment(), "NewFragmentTag");
+//        ft.commit();
     }
 }

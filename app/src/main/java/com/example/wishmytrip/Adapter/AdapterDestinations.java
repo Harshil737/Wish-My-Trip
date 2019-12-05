@@ -1,4 +1,4 @@
-package com.example.wishmytrip;
+package com.example.wishmytrip.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.wishmytrip.CustomizedLinearLayout;
 import com.example.wishmytrip.POJO.Destination;
+import com.example.wishmytrip.R;
 
 import java.util.ArrayList;
 
