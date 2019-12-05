@@ -16,12 +16,6 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name=".CruiseDetails"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".NavigationBar"
             android:label="@string/title_activity_navigation_bar"
             android:theme="@style/AppTheme.NoActionBar">
