@@ -1,5 +1,6 @@
 package com.example.wishmytrip.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wishmytrip.Adapter.AdapterDestinations;
+import com.example.wishmytrip.CruiseDetails;
 import com.example.wishmytrip.POJO.Destination;
 import com.example.wishmytrip.R;
 
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment implements AdapterDestinations.onDest
         recycler_view_new_york.setAdapter(adapterDestinations);
         adapterDestinations.setClickListener(this);
 
-        RecyclerView.LayoutManager layout_manager_best_scuba = new LinearLayoutManager(getActivity().getApplicationContext(), RecyclerView.HORIZONTAL, true);
+        RecyclerView.LayoutManager layout_manager_best_scuba = new LinearLayoutManager(getActivity().getApplicationContext(), RecyclerView.HORIZONTAL, false);
         RecyclerView recycler_view_best_scuba = root.findViewById(R.id.home_recycler_view_best_scuba);
         AdapterDestinations adapterDestinations1 = new AdapterDestinations(getActivity().getApplicationContext(), listDestinations);
         recycler_view_best_scuba.setLayoutManager(layout_manager_best_scuba);
@@ -82,10 +84,10 @@ public class HomeFragment extends Fragment implements AdapterDestinations.onDest
 
     @Override
     public void onDestinationClicked(Destination destination) {
-        Toast.makeText(this.getContext(), destination.getDescription() + "", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this.getContext(), destination.getDescription() + "", Toast.LENGTH_LONG).show();
 
-//        Intent intent = new Intent(getActivity(), CruiseDetails.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getActivity(), CruiseDetails.class);
+        startActivity(intent);
 
 //        final FragmentTransaction ft = getFragmentManager().beginTransaction();
 //        ft.replace(R.id.nav_host_fragment, new BlankFragment(), "NewFragmentTag");

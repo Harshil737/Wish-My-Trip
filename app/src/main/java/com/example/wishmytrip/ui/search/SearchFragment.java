@@ -1,13 +1,10 @@
 package com.example.wishmytrip.ui.search;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,13 +12,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,18 +24,13 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.wishmytrip.R;
-import com.example.wishmytrip.cruiseFragment;
+import com.example.wishmytrip.CruiseFragment;
 
-import java.text.CollationElementIterator;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 import static android.R.layout.simple_spinner_item;
 
@@ -110,7 +98,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-                cruiseFragment fragment = new cruiseFragment();
+                CruiseFragment fragment = new CruiseFragment();
                 fragmentTransaction.add(R.id.recyclerView, fragment);
                 fragmentTransaction.commit();
             }

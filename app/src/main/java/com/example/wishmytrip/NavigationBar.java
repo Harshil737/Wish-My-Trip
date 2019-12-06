@@ -65,7 +65,7 @@ public class NavigationBar extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 Toast.makeText(getApplicationContext(), "Query:" + query, Toast.LENGTH_LONG).show();
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.add(R.id.nav_host_fragment, new cruiseFragment());
+                ft.add(R.id.nav_host_fragment, new CruiseFragment());
                 ft.commit();
                 return false;
             }
