@@ -40,8 +40,7 @@ public class CruiseAdapter extends RecyclerView.Adapter<CruiseAdapter.CruiseView
         holder.textViewTitle.setText(cruise.getTitle());
         holder.textViewDesc.setText(cruise.getDesc());
         holder.textViewPrice.setText(String.valueOf(cruise.getPrice()));
-        holder.imageView.setImageDrawable(mctx.getResources().getDrawable(cruise.getImage(), null));
-
+        holder.imageView.setImageDrawable(mctx.getResources().getDrawable(R.drawable.c1, null));
     }
 
     @Override
