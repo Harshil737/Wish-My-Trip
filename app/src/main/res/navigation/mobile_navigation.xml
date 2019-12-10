@@ -40,4 +40,10 @@
         android:name="com.example.wishmytrip.ui.help.HelpFragment"
         android:label="@string/menu_help"
         tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/nav_edit"
+        android:name="com.example.wishmytrip.EditProfile"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>

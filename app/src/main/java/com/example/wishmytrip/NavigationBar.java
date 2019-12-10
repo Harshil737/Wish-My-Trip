@@ -44,7 +44,7 @@ public class NavigationBar extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_edit,
                 R.id.nav_home, R.id.nav_search, R.id.nav_booking_details,
                 R.id.nav_order_history, R.id.nav_local_guide, R.id.nav_help)
                 .setDrawerLayout(drawer)
