@@ -13,32 +13,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.wishmytrip.R;
 import com.example.wishmytrip.CruiseFragment;
+import com.example.wishmytrip.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import static android.R.layout.simple_spinner_item;
 
-public class SearchFragment extends  Fragment implements DatePickerDialog.OnDateSetListener {
+public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private SearchViewModel galleryViewModel;
     private TextView frmDate;
-    private Spinner cruiseShip, cruiseLine,priceRange,from,too;
+    private Spinner cruiseShip, cruiseLine, priceRange, from, too;
     private Button btnSearch;
     //final TextView frmDate=findViewById(R.id.txtFromDate);
 
@@ -49,13 +45,13 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         final TextView textView = root.findViewById(R.id.text_Too);
         final ImageView dt1 = root.findViewById(R.id.btnFromDate);
-         frmDate=root.findViewById(R.id.txtFromDate);
+        frmDate = root.findViewById(R.id.txtFromDate);
         cruiseLine = root.findViewById(R.id.txt_CruiseLine);
-        cruiseShip=root.findViewById(R.id.txt_CruiseShip);
-        priceRange=root.findViewById(R.id.txt_PriceRange);
-        too=root.findViewById(R.id.txtToo);
-        from=root.findViewById(R.id.txtFrom);
-        btnSearch=root.findViewById(R.id.btn_Search);
+        cruiseShip = root.findViewById(R.id.txt_CruiseShip);
+        priceRange = root.findViewById(R.id.txt_PriceRange);
+        too = root.findViewById(R.id.txtToo);
+        from = root.findViewById(R.id.txtFrom);
+        btnSearch = root.findViewById(R.id.btn_Search);
         galleryViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -68,8 +64,6 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
                 showDateP();
                 return false;
             }
-
-
         });*/
 
         dt1.setOnClickListener(new View.OnClickListener() {
@@ -80,33 +74,34 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         });
         addItemsOnSpinner2();
 
-        btnSearch.setOnClickListener(new View.OnClickListener(){
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getActivity().getApplicationContext(),
-//                        "OnClickListener : " +
-//                                "\nFrom : "+ String.valueOf(from.getSelectedItem()) +
-//                                "\nTo : "+ String.valueOf(too.getSelectedItem())+
-//                                "\nDate : "+ String.valueOf(frmDate.getText()) +
-//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-//                                "\nLine : "+ String.valueOf(cruiseLine.getSelectedItem()) +
-//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-//                                "\nRange : "+ String.valueOf(priceRange.getSelectedItem()),
-//                        Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "OnClickListener : " +
+                                "\nFrom : " + String.valueOf(from.getSelectedItem()) +
+                                "\nTo : " + String.valueOf(too.getSelectedItem()) +
+                                "\nDate : " + String.valueOf(frmDate.getText()) +
+                                "\nShip : " + String.valueOf(cruiseShip.getSelectedItem()) +
+                                "\nLine : " + String.valueOf(cruiseLine.getSelectedItem()) +
+                                "\nShip : " + String.valueOf(cruiseShip.getSelectedItem()) +
+                                "\nRange : " + String.valueOf(priceRange.getSelectedItem()),
+                        Toast.LENGTH_SHORT).show();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
 
                 CruiseFragment fragment = new CruiseFragment();
-                fragmentTransaction.add(R.id.recyclerView, fragment);
-                fragmentTransaction.commit();
+                ft.replace(R.id.nav_host_fragment, fragment);
+                ft.commit();
             }
         });
         return root;
     }
 
-    private void showDateP(){
-        DatePickerDialog datePickerDialog=new DatePickerDialog(
-                getContext(),this,
+    private void showDateP() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                getContext(), this,
                 Calendar.getInstance().get(Calendar.YEAR),
                 Calendar.getInstance().get(Calendar.MONTH),
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
@@ -116,8 +111,8 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        String date=day+"/"+month+"/"+year;
-        Toast.makeText(getActivity().getApplicationContext(),date,Toast.LENGTH_SHORT).show();
+        String date = day + "/" + month + "/" + year;
+        Toast.makeText(getActivity().getApplicationContext(), date, Toast.LENGTH_SHORT).show();
 
         frmDate.setText(date);
 
@@ -130,7 +125,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         fromlist.add("NewYork");
         fromlist.add("Norway");
         ArrayAdapter<String> dataAdapterfromlist = new ArrayAdapter<String>(getActivity().getApplicationContext()
-                , simple_spinner_item,fromlist);
+                , simple_spinner_item, fromlist);
         dataAdapterfromlist.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         from.setAdapter(dataAdapterfromlist);
 
@@ -140,7 +135,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         toolist.add("Venice");
         toolist.add("Paris");
         ArrayAdapter<String> dataAdaptertoolist = new ArrayAdapter<String>(getActivity().getApplicationContext()
-                , simple_spinner_item,toolist);
+                , simple_spinner_item, toolist);
         dataAdaptertoolist.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         too.setAdapter(dataAdaptertoolist);
 
@@ -150,7 +145,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         linelist.add("XYZ");
         linelist.add("PQR");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext()
-                 , simple_spinner_item,linelist);
+                , simple_spinner_item, linelist);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cruiseLine.setAdapter(dataAdapter);
 
@@ -160,7 +155,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         cruiseshiplist.add("Diamond");
         cruiseshiplist.add("Platinum");
         ArrayAdapter<String> dataAdaptercruiseshiplist = new ArrayAdapter<String>(getActivity().getApplicationContext()
-                , simple_spinner_item,cruiseshiplist);
+                , simple_spinner_item, cruiseshiplist);
         dataAdaptercruiseshiplist.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cruiseShip.setAdapter(dataAdaptercruiseshiplist);
 
@@ -170,7 +165,7 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         pricerangelist.add("1000-1500");
         pricerangelist.add("1500-2000");
         ArrayAdapter<String> dataAdapterpricerangelist = new ArrayAdapter<String>(getActivity().getApplicationContext()
-                , simple_spinner_item,pricerangelist);
+                , simple_spinner_item, pricerangelist);
         dataAdapterpricerangelist.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         priceRange.setAdapter(dataAdapterpricerangelist);
 

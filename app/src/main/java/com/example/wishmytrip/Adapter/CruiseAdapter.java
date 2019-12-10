@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.wishmytrip.POJO.Cruise;
 import com.example.wishmytrip.R;
 
@@ -46,7 +47,13 @@ public class CruiseAdapter extends RecyclerView.Adapter<CruiseAdapter.CruiseView
         holder.textViewTitle.setText(cruise.getTitle());
         holder.textViewDesc.setText(cruise.getDesc());
         holder.textViewPrice.setText(String.valueOf(cruise.getPrice()));
-        holder.imageView.setImageDrawable(mctx.getResources().getDrawable(R.drawable.c1, null));
+
+        Glide.with(mctx)
+                .asBitmap()
+                .fitCenter()
+                .load(cruise.getImageURL1())
+                .into(holder.imageView);
+
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override

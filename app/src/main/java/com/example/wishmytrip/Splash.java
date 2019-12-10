@@ -8,6 +8,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.wishmytrip.ui.login.LoginActivity;
+
 public class Splash extends AppCompatActivity {
 
 
@@ -19,11 +21,21 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         iv = (ImageView) findViewById(R.id.iv_splash);
-        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
 
-        iv.startAnimation(myanim);
-
-        Intent intent = new Intent(this, NavigationBar.class);
-        startActivity(intent);
+        Thread timerThread = new Thread() {
+            public void run() {
+                try {
+                    Animation myanim = AnimationUtils.loadAnimation(Splash.this, R.anim.mytransition);
+                    iv.startAnimation(myanim);
+                    sleep(2500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    Intent homeIntent = new Intent(Splash.this, NavigationBar.class);
+                    startActivity(homeIntent);
+                }
+            }
+        };
+        timerThread.start();
     }
 }
