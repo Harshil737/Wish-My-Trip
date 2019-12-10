@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Thank You For Booking From Wish My Trip Your Details Will Be Sent to You In You Email"
+        android:text="Thank You For Booking From Wish My Trip Your Details Will Be Sent to You In Your Email"
         android:textSize="20dp"
         android:textStyle="bold">
     </TextView>
@@ -31,4 +31,16 @@
         android:layout_gravity="center">
 
     </ImageView>
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:text="Back To Home"
+        android:textSize="30dp"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite" />
 </LinearLayout>
