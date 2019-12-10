@@ -17,7 +17,7 @@
 
 
         <Button
-            android:id="@+id/payment_btn_placeOrder"
+            android:id="@+id/confirm"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
