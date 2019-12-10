@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.example.wishmytrip.MainActivity;
 import com.example.wishmytrip.NavigationBar;
 import com.example.wishmytrip.R;
+import com.example.wishmytrip.Register;
 import com.example.wishmytrip.ui.login.LoginViewModel;
 import com.example.wishmytrip.ui.login.LoginViewModelFactory;
 
@@ -34,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     public Button btnsignup;
+    public Button btnlogin;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 .get(LoginViewModel.class);
 
         btnsignup = findViewById(R.id.signup);
+
         btnsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,9 +157,13 @@ public class LoginActivity extends AppCompatActivity {
 
     public void openSignUp()
     {
-        Intent intent=new Intent(LoginActivity.this, NavigationBar.class);
+        Intent intent=new Intent(LoginActivity.this, Register.class);
         startActivity(intent);
     }
 
 
+    public void registerUser(View view) {
+        Intent intent=new Intent(LoginActivity.this, Register.class);
+        startActivity(intent);
+    }
 }

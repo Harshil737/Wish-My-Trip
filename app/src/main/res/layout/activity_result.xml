@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
 
     android:orientation="vertical"
 
@@ -10,37 +10,36 @@
     <ImageView
         android:layout_width="250dp"
         android:layout_height="250dp"
-        android:src="@drawable/logo_design"
         android:layout_gravity="center"
         android:layout_margin="30dp"
-        ></ImageView>
+        android:src="@drawable/logo_design"></ImageView>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Thank You For Booking From Wish My Trip Your Details Will Be Sent to You In Your Email"
         android:textSize="20dp"
-        android:textStyle="bold">
-    </TextView>
+        android:textStyle="bold"></TextView>
 
     <ImageView
-        android:layout_margin="50dp"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/check"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:src="@drawable/check">
 
     </ImageView>
+
     <Button
         android:id="@+id/btn_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_weight="1"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:text="Back To Home"
-        android:textSize="30dp"
         android:textAllCaps="true"
-        android:textColor="@color/colorWhite" />
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
 </LinearLayout>
