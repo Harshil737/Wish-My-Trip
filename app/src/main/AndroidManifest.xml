@@ -21,7 +21,7 @@
             android:label="@string/title_activity_login" />
         <activity
             android:name=".NavigationBar"
-            android:label="@string/title_act ivity_navigation_bar"
+            android:label="@string/title_activity_navigation_bar"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".Splash">
