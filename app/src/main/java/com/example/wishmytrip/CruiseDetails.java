@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +28,7 @@ public class CruiseDetails extends AppCompatActivity {
     private TabLayout tabLayout;
     private Destination destination;
     private TextView tv_title, tv_oldPrice, tv_newPrice, tv_ports, tv_itinerary, tv_dates, tv_nights;
+    private Button bn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +36,14 @@ public class CruiseDetails extends AppCompatActivity {
         setContentView(R.layout.activity_cruise_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         Date departs = new Date();
         Date returns = new Date();
         departs.setTime(intent.getLongExtra("departs", -1));
         returns.setTime(intent.getLongExtra("returns", -1));
 
-        Cruise cruise = new Cruise(intent.getIntExtra("id", 0), intent.getStringExtra("title"), intent.getStringExtra("desc"), intent.getStringExtra("departing_port"), intent.getStringExtra("return_port"), intent.getStringExtra("itinerary"), intent.getStringExtra("imageURL1"), intent.getStringExtra("imageURL2"), intent.getStringExtra("imageURL3"), intent.getDoubleExtra("price", 0), departs, returns, intent.getIntExtra("nights", 0));
+        final Cruise cruise = new Cruise(intent.getIntExtra("id", 0), intent.getStringExtra("title"), intent.getStringExtra("desc"), intent.getStringExtra("departing_port"), intent.getStringExtra("return_port"), intent.getStringExtra("itinerary"), intent.getStringExtra("imageURL1"), intent.getStringExtra("imageURL2"), intent.getStringExtra("imageURL3"), intent.getDoubleExtra("price", 0), departs, returns, intent.getIntExtra("nights", 0));
 
         tv_title = findViewById(R.id.cruise_tv_name);
         tv_oldPrice = findViewById(R.id.cruise_tv_oldPrice);
@@ -49,6 +52,16 @@ public class CruiseDetails extends AppCompatActivity {
         tv_itinerary = findViewById(R.id.cruise_tv_itinerary);
         tv_dates = findViewById(R.id.cruise_tv_dates);
         tv_nights = findViewById(R.id.cruise_tv_nights);
+        bn=findViewById(R.id.cruise_buyNow);
+        bn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(CruiseDetails.this,calculation.class);
+                intent.putExtra("Price",cruise.getPrice());
+                startActivity(intent);
+
+                            }
+        });
 
         viewPager = findViewById(R.id.cruise_viewPager);
         FragmentManager manager = getSupportFragmentManager();
