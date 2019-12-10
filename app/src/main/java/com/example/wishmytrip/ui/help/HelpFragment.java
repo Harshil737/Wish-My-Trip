@@ -23,8 +23,8 @@ public class HelpFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         helpViewModel =
                 ViewModelProviders.of(this).get(HelpViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_help, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
+        View root = inflater.inflate(R.layout.activity_main, container, false);
+        final TextView textView = root.findViewById(R.id.your_name);
         helpViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
