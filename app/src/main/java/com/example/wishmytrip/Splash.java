@@ -31,7 +31,7 @@ public class Splash extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent homeIntent = new Intent(Splash.this, LoginActivity.class);
+                    Intent homeIntent = new Intent(Splash.this, NavigationBar.class);
                     startActivity(homeIntent);
                 }
             }
