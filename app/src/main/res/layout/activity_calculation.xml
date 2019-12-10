@@ -186,11 +186,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="0dp"
                         android:padding="7dp"
-                        android:text="$489.15 "
                         android:textAllCaps="true"
+                        android:text="$489.15 "
                         android:textColor="@color/colorBlack"
                         android:textSize="16sp" />
                 </RelativeLayout>
