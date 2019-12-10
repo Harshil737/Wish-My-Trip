@@ -40,7 +40,7 @@ public class OrderHistoryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         cruiseList.add(
                 new Order(
-                        "",
+                        "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
                         "22/05/19",
                         "Royal",
                         "Diamond",

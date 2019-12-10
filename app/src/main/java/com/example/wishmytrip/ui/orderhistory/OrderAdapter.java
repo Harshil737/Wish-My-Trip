@@ -35,6 +35,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
+        holder.imageView.setImageResource(R.drawable.cruise2);
         holder.textViewCruiseShip.setText(orderList.get(position).getCruiseship());
         holder.textViewCruiseLine.setText(orderList.get(position).getCruiseline());
         holder.textViewPrice.setText(String.valueOf(orderList.get(position).getPricerange()));
