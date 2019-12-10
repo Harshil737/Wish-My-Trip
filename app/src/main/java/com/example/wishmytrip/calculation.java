@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class calculation extends AppCompatActivity {
     private TextView tprice;
     private TextView tax;
     private TextView dtotal,finaltotal,trip_total;
+    private Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,16 @@ public class calculation extends AppCompatActivity {
         finaltotal.setText(total+"");
         trip_total.setText(total+"");
         dtotal.setText(total+"");
+        btn=findViewById(R.id.confirm);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(calculation.this,result.class);
+                startActivity(i);
+
+            }
+        });
+
 
 
 
