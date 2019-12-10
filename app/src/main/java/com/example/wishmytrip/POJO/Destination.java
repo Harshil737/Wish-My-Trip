@@ -1,4 +1,4 @@
-package com.example.wishmytrip;
+package com.example.wishmytrip.POJO;
 
 public class Destination {
     private int id;
@@ -26,7 +26,7 @@ public class Destination {
         this.id = id;
     }
 
-    String getImageURL() {
+    public String getImageURL() {
         return imageURL;
     }
 
@@ -34,7 +34,7 @@ public class Destination {
         this.imageURL = imageURL;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
@@ -42,7 +42,7 @@ public class Destination {
         this.title = title;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -50,7 +50,7 @@ public class Destination {
         this.description = description;
     }
 
-    Double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
