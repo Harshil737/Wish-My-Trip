@@ -1,5 +1,6 @@
 package com.example.wishmytrip;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,7 +15,8 @@ import com.example.wishmytrip.POJO.Cruise;
 import com.example.wishmytrip.POJO.Destination;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CruiseDetails extends AppCompatActivity {
@@ -31,6 +33,15 @@ public class CruiseDetails extends AppCompatActivity {
         setContentView(R.layout.activity_cruise_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Intent intent = getIntent();
+
+        Date departs = new Date();
+        Date returns = new Date();
+        departs.setTime(intent.getLongExtra("departs", -1));
+        returns.setTime(intent.getLongExtra("returns", -1));
+
+        Cruise cruise = new Cruise(intent.getIntExtra("id", 0), intent.getStringExtra("title"), intent.getStringExtra("desc"), intent.getStringExtra("departing_port"), intent.getStringExtra("return_port"), intent.getStringExtra("itinerary"), intent.getStringExtra("imageURL1"), intent.getStringExtra("imageURL2"), intent.getStringExtra("imageURL3"), intent.getDoubleExtra("price", 0), departs, returns, intent.getIntExtra("nights", 0));
+
         tv_title = findViewById(R.id.cruise_tv_name);
         tv_oldPrice = findViewById(R.id.cruise_tv_oldPrice);
         tv_newPrice = findViewById(R.id.cruise_tv_newPrice);
@@ -38,21 +49,6 @@ public class CruiseDetails extends AppCompatActivity {
         tv_itinerary = findViewById(R.id.cruise_tv_itinerary);
         tv_dates = findViewById(R.id.cruise_tv_dates);
         tv_nights = findViewById(R.id.cruise_tv_nights);
-
-        Cruise cruise = new Cruise(
-                1,
-                "WESTERN MEDITERRANEAN Costa Cruise Line",
-                "WESTERN MEDITERRANEAN Costa Cruise Line",
-                "Marseille",
-                "Costa Diadema",
-                ";Marseille, France;Savona, Italy;Naples, Italy;Palermo, Italy;Valencia, Spain;Barcelona, Spain;Marseille, France",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                1809.99,
-                new Date(Calendar.getInstance().get(Calendar.DATE)),
-                new Date(Calendar.getInstance().get(Calendar.DATE) + 5),
-                5);
 
         viewPager = findViewById(R.id.cruise_viewPager);
         FragmentManager manager = getSupportFragmentManager();
