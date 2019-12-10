@@ -80,8 +80,6 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         });
         addItemsOnSpinner2();
 
-        addListenerOnSpinnerItemSelection();
-
         btnSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -177,13 +175,4 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         priceRange.setAdapter(dataAdapterpricerangelist);
 
     }
-
-    public void addListenerOnSpinnerItemSelection() {
-
-        cruiseLine.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-
-    }
-
-
-
 }
