@@ -16,6 +16,7 @@
 
     <TextView
         android:layout_width="wrap_content"
+        android:layout_margin="25dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Thank You For Booking From Wish My Trip Your Details Will Be Sent to You In Your Email"
@@ -40,6 +41,7 @@
         android:elevation="4dp"
         android:text="Back To Home"
         android:textAllCaps="true"
+        android:layout_gravity="bottom"
         android:textColor="@color/colorWhite"
         android:textSize="20sp" />
 </LinearLayout>
