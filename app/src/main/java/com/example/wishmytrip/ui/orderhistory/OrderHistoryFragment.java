@@ -32,13 +32,6 @@ public class OrderHistoryFragment extends Fragment {
         orderHistoryViewModel =
                 ViewModelProviders.of(this).get(OrderHistoryViewModel.class);
         View root = inflater.inflate(R.layout.fragment_order_history, container, false);
-        final TextView textView = root.findViewById(R.id.ab);
-        orderHistoryViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(textView.getText());
-            }
-        });
 
         cruiseList = new ArrayList<>();
         recyclerView = root.findViewById(R.id.recyclerView);

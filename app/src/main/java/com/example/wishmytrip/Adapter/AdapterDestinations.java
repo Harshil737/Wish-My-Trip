@@ -1,4 +1,4 @@
-package com.example.wishmytrip;
+package com.example.wishmytrip.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.wishmytrip.CustomizedLinearLayout;
+import com.example.wishmytrip.POJO.Destination;
+import com.example.wishmytrip.R;
 
 import java.util.ArrayList;
 
@@ -20,10 +22,15 @@ public class AdapterDestinations extends RecyclerView.Adapter<AdapterDestination
     private static final String TAG = AdapterDestinations.class.getSimpleName();
     private ArrayList<Destination> destinationsList;
     private Context context;
+    private onDestinationItemClicked clickListener;
 
     public AdapterDestinations(Context context, ArrayList<Destination> list) {
         this.destinationsList = list;
         this.context = context;
+    }
+
+    public void setClickListener(onDestinationItemClicked clickListener) {
+        this.clickListener = clickListener;
     }
 
     @NonNull
@@ -48,9 +55,15 @@ public class AdapterDestinations extends RecyclerView.Adapter<AdapterDestination
         holder.ll_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, destinationsList.get(position).getTitle(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, destinationsList.get(position).getTitle(), Toast.LENGTH_LONG).show();
+                Destination destination = new Destination(destinationsList.get(position).getId(), destinationsList.get(position).getImageURL(), destinationsList.get(position).getTitle(), destinationsList.get(position).getDescription(), destinationsList.get(position).getPrice());
+                clickListener.onDestinationClicked(destination);
             }
         });
+    }
+
+    public interface onDestinationItemClicked {
+        void onDestinationClicked(Destination destination);
     }
 
     @Override
