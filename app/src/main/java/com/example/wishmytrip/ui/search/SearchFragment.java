@@ -34,7 +34,7 @@ import java.util.Calendar;
 
 import static android.R.layout.simple_spinner_item;
 
-public class SearchFragment extends  Fragment implements DatePickerDialog.OnDateSetListener {
+public class SearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private SearchViewModel galleryViewModel;
     private TextView frmDate;
@@ -83,22 +83,27 @@ public class SearchFragment extends  Fragment implements DatePickerDialog.OnDate
         btnSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getActivity().getApplicationContext(),
-//                        "OnClickListener : " +
-//                                "\nFrom : "+ String.valueOf(from.getSelectedItem()) +
-//                                "\nTo : "+ String.valueOf(too.getSelectedItem())+
-//                                "\nDate : "+ String.valueOf(frmDate.getText()) +
-//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-//                                "\nLine : "+ String.valueOf(cruiseLine.getSelectedItem()) +
-//                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
-//                                "\nRange : "+ String.valueOf(priceRange.getSelectedItem()),
-//                        Toast.LENGTH_SHORT).show();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "OnClickListener : " +
+                                "\nFrom : "+ String.valueOf(from.getSelectedItem()) +
+                                "\nTo : "+ String.valueOf(too.getSelectedItem())+
+                                "\nDate : "+ String.valueOf(frmDate.getText()) +
+                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
+                                "\nLine : "+ String.valueOf(cruiseLine.getSelectedItem()) +
+                                "\nShip : "+ String.valueOf(cruiseShip.getSelectedItem())+
+                                "\nRange : "+ String.valueOf(priceRange.getSelectedItem()),
+                        Toast.LENGTH_SHORT).show();
 
-                CruiseFragment fragment = new CruiseFragment();
-                fragmentTransaction.add(R.id.recyclerView, fragment);
-                fragmentTransaction.commit();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.add(R.id.nav_host_fragment, new CruiseFragment());
+                ft.commit();
+
+//                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//
+//                CruiseFragment fragment = new CruiseFragment();
+//                fragmentTransaction.add(R.id.recyclerView, fragment);
+//                fragmentTransaction.commit();
             }
         });
         return root;
