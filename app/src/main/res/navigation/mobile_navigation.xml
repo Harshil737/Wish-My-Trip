@@ -17,11 +17,11 @@
         android:label="@string/menu_search"
         tools:layout="@layout/fragment_search" />
 
-    <fragment
-        android:id="@+id/nav_booking_details"
-        android:name="com.example.wishmytrip.ui.bookingdetails.BookingDetailsFragment"
-        android:label="@string/menu_booking_details"
-        tools:layout="@layout/fragment_booking_details" />
+<!--    <fragment-->
+<!--        android:id="@+id/nav_booking_details"-->
+<!--        android:name="com.example.wishmytrip.ui.bookingdetails.BookingDetailsFragment"-->
+<!--        android:label="@string/menu_booking_details"-->
+<!--        tools:layout="@layout/fragment_booking_details" />-->
 
     <fragment
         android:id="@+id/nav_order_history"
@@ -32,18 +32,18 @@
     <fragment
         android:id="@+id/nav_local_guide"
         android:name="com.example.wishmytrip.ui.localguide.LocalGuideFragment"
-        android:label="@string/menu_local"
+        android:label="About Us"
         tools:layout="@layout/fragment_local_guide" />
 
     <fragment
         android:id="@+id/nav_help"
         android:name="com.example.wishmytrip.ui.help.HelpFragment"
-        android:label="@string/menu_help"
+        android:label="Contact Us"
         tools:layout="@layout/fragment_help" />
 
     <fragment
         android:id="@+id/nav_edit"
         android:name="com.example.wishmytrip.EditProfile"
-        android:label="@string/menu_help"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_help" />
 </navigation>
