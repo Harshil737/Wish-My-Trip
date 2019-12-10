@@ -1,8 +1,11 @@
 package com.example.wishmytrip;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +17,8 @@ import com.example.wishmytrip.POJO.Cruise;
 import com.example.wishmytrip.POJO.Destination;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CruiseDetails extends AppCompatActivity {
@@ -24,12 +28,22 @@ public class CruiseDetails extends AppCompatActivity {
     private TabLayout tabLayout;
     private Destination destination;
     private TextView tv_title, tv_oldPrice, tv_newPrice, tv_ports, tv_itinerary, tv_dates, tv_nights;
+    private Button bn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cruise_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        final Intent intent = getIntent();
+
+        Date departs = new Date();
+        Date returns = new Date();
+        departs.setTime(intent.getLongExtra("departs", -1));
+        returns.setTime(intent.getLongExtra("returns", -1));
+
+        final Cruise cruise = new Cruise(intent.getIntExtra("id", 0), intent.getStringExtra("title"), intent.getStringExtra("desc"), intent.getStringExtra("departing_port"), intent.getStringExtra("return_port"), intent.getStringExtra("itinerary"), intent.getStringExtra("imageURL1"), intent.getStringExtra("imageURL2"), intent.getStringExtra("imageURL3"), intent.getDoubleExtra("price", 0), departs, returns, intent.getIntExtra("nights", 0));
 
         tv_title = findViewById(R.id.cruise_tv_name);
         tv_oldPrice = findViewById(R.id.cruise_tv_oldPrice);
@@ -38,21 +52,16 @@ public class CruiseDetails extends AppCompatActivity {
         tv_itinerary = findViewById(R.id.cruise_tv_itinerary);
         tv_dates = findViewById(R.id.cruise_tv_dates);
         tv_nights = findViewById(R.id.cruise_tv_nights);
+        bn=findViewById(R.id.cruise_buyNow);
+        bn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(CruiseDetails.this,calculation.class);
+                intent.putExtra("Price",cruise.getPrice());
+                startActivity(intent);
 
-        Cruise cruise = new Cruise(
-                1,
-                "WESTERN MEDITERRANEAN Costa Cruise Line",
-                "WESTERN MEDITERRANEAN Costa Cruise Line",
-                "Marseille",
-                "Costa Diadema",
-                ";Marseille, France;Savona, Italy;Naples, Italy;Palermo, Italy;Valencia, Spain;Barcelona, Spain;Marseille, France",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                "https://images.softvoyage.com/cruises/275x175/ship/331/ship.jpg",
-                1809.99,
-                new Date(Calendar.getInstance().get(Calendar.DATE)),
-                new Date(Calendar.getInstance().get(Calendar.DATE) + 5),
-                5);
+                            }
+        });
 
         viewPager = findViewById(R.id.cruise_viewPager);
         FragmentManager manager = getSupportFragmentManager();
